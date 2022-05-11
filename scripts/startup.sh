@@ -326,7 +326,7 @@ echo -ne "
 Do you want to cater install to Render Device
 "
 
-options=("Universal" "Intel" "AMD" "Nvidia" "Nvidia-old")
+options=("Auto" "Intel" "AMD" "Nvidia" "Nvidia-old")
 select_option $? 4 "${options[@]}"
 cgpuv=${options[$?]}
 set_option CGPU $cgpuv
@@ -364,7 +364,7 @@ desktopenv
 # Set fixed options that installation uses if user choses server installation
 set_option INSTALL_TYPE MINIMAL
 set_option AUR_HELPER NONE
-set_option CGPU Universal
+set_option CGPU Auto
 set_option setvsync 0
 if [[ ! $desktop_env == server ]]; then
   clear
@@ -375,7 +375,7 @@ if [[ ! $desktop_env == server ]]; then
     clear
     logo
     specificgpu
-    if [[ ! $cgpuv == "Universal" ]]; then
+    if [[ ! $cgpuv == "Auto" ]]; then
     vsyncset
     fi
   fi
