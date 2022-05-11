@@ -327,16 +327,10 @@ Do you want to cater install to Render Device
 "
 
 options=("Universal" "Intel" "AMD" "Nvidia" "Nvidia-old")
-select_option $? 1 "${options[@]}"
+select_option $? 4 "${options[@]}"
+cgpuv=${options[$?]}
+set_option CGPU $cgpuv
 
-case $? in
-0) set_option CGPU Universal;;
-1) set_option CGPU Intel;;
-2) set_option CGPU AMD;;
-3) set_option CGPU Nvidia;;
-4) set_option CGPU Nvidia-old;;
-*) echo "Wrong option please select again"; specificgpu;;
-esac
 }
 
 # @description Vsync
@@ -350,8 +344,10 @@ select_option $? 1 "${options[@]}"
 
 case ${options[$?]} in
     y|Y|yes|Yes|YES)
+    vsync=1
     set_option setvsync 1;;
     n|N|no|NO|No)
+    vsync=0
     set_option setvsync 0;;
     *) echo "Wrong option. Try again";vsyncset;;
 esac
@@ -375,11 +371,11 @@ if [[ ! $desktop_env == server ]]; then
   logo
   aurhelper
   installtype
-  if [[ $INSTALL_TYPE == "FULL" ]]; then
+  if [[ $install_type == "FULL" ]]; then
     clear
     logo
     specificgpu
-    if [[ ! $CGPU == "Universal" ]]; then
+    if [[ ! $cgpuv == "Universal" ]]; then
     vsyncset
     fi
   fi
