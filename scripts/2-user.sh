@@ -97,9 +97,11 @@ if [[ $INSTALL_TYPE == "FULL" ]]; then
     cd ~
     git clone https://github.com/stojshic/dotfiles-openbox
     ./dotfiles-openbox/install-titus.sh
-  elif [[ $DESKTOP_ENV == "awesome" ]]; then
-    git clone https://github.com/itsmagu/awesome /home/$USERNAME/.config/awesome
   fi
+fi
+
+if [[ $DESKTOP_ENV == "awesome" ]]; then
+  git clone https://github.com/itsmagu/awesome /home/$USERNAME/.config/awesome
 fi
 
 echo -ne "
