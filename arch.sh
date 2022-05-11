@@ -8,6 +8,7 @@ set +a
     ( bash $SCRIPT_DIR/scripts/startup.sh )|& tee startup.log
       source $CONFIGS_DIR/setup.conf
     ( bash $SCRIPT_DIR/scripts/0-preinstall.sh )|& tee 0-preinstall.log
+    pwd
     ls
     ( arch-chroot /mnt $HOME/archi/scripts/1-setup.sh )|& tee 1-setup.log
     if [[ ! $DESKTOP_ENV == server ]]; then
