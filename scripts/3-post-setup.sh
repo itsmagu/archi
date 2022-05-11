@@ -193,17 +193,13 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 rustup install stable
-echo -ne "
--------------------------------------------------------------------------
-                    Installing Chezmoi
--------------------------------------------------------------------------
-"
-sh -c "$(curl -fsLS chezmoi.io/get)"
+
 echo -ne "
 -------------------------------------------------------------------------
                     Keyboard Writeup
 -------------------------------------------------------------------------
 "
+echo 'XKBLAYOUT = "se"' >> /etc/default/keyboard
 localectl --no-ask-password set-x11-keymap se
 setxkbmap se
 setxkbmap -option 'caps:escape'

@@ -110,6 +110,21 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 echo -ne "
 -------------------------------------------------------------------------
+                  Steals Configs from Github
+-------------------------------------------------------------------------
+"
+chezmoi init --apply https://github.com/itsmagu/dotconf
+echo -ne "
+-------------------------------------------------------------------------
+                    Keyboard Writeup
+-------------------------------------------------------------------------
+"
+localectl --no-ask-password set-x11-keymap se
+setxkbmap se
+setxkbmap -option 'caps:escape'
+
+echo -ne "
+-------------------------------------------------------------------------
                     SYSTEM READY FOR 3-post-setup.sh
 -------------------------------------------------------------------------
 "

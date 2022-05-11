@@ -222,6 +222,14 @@ if [[ ${FS} == "luks" ]]; then
 # making mkinitcpio with linux kernel
     mkinitcpio -p linux
 fi
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Installing Chezmoi
+-------------------------------------------------------------------------
+"
+sh -c "$(curl -fsLS chezmoi.io/get)"
+
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 2-user.sh
