@@ -320,6 +320,43 @@ installtype () {
   set_option INSTALL_TYPE $install_type
 }
 
+# @description GPU
+specificgpu () {
+echo -ne "
+Do you want to cater install to Render Device
+"
+
+options=("Universal" "Intel" "AMD" "Nvidia" "Nvidia-old")
+select_option $? 1 "${options[@]}"
+
+case $? in
+0) set_option CGPU Universal;;
+1) set_option CGPU Intel;;
+2) set_option CGPU AMD;;
+3) set_option CGPU Nvidia;;
+4) set_option CGPU Nvidia-old;;
+*) echo "Wrong option please select again"; specificgpu;;
+esac
+}
+
+# @description Vsync
+vsyncset () {
+echo -ne "
+Try for Vsync? (Won't boot if failed)
+"
+
+options=("No" "Yes")
+select_option $? 1 "${options[@]}"
+
+case ${options[$?]} in
+    y|Y|yes|Yes|YES)
+    set_option setvsync 1;;
+    n|N|no|NO|No)
+    set_option setvsync 0;;
+    *) echo "Wrong option. Try again";vsyncset;;
+esac
+}
+
 # More features in future
 # language (){}
 
@@ -331,12 +368,24 @@ desktopenv
 # Set fixed options that installation uses if user choses server installation
 set_option INSTALL_TYPE MINIMAL
 set_option AUR_HELPER NONE
+set_option CGPU Universal
+set_option setvsync 0
 if [[ ! $desktop_env == server ]]; then
   clear
   logo
   aurhelper
   installtype
+  if [[ $INSTALL_TYPE == "FULL" ]]; then
+    clear
+    logo
+    specificgpu
+    if [[ ! $CGPU == "Universal" ]]; then
+    vsyncset
+    fi
+  fi
 fi
+clear
+logo
 diskpart
 filesystem
 timezone

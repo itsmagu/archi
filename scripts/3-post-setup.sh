@@ -192,6 +192,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 echo 'XKBLAYOUT = "se"' >> /etc/default/keyboard
+echo 'XKBLAYOUT = "se"'
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -199,6 +200,10 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 echo "root:$PASSWORD" | chpasswd
+echo "Root password set in stone"
+chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish $USERNAME
+echo "Shell is now set to Fish"
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -212,8 +217,8 @@ sed -i 's/^%wheel ALL=(ALL:ALL) NOPASSWD: ALL/# %wheel ALL=(ALL:ALL) NOPASSWD: A
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
-rm -r $HOME/archi
-rm -r /home/$USERNAME/archi
+rm -rv $HOME/archi
+rm -rv /home/$USERNAME/archi
 
 # Replace in the same state
 cd $pwd

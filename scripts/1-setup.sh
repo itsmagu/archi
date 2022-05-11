@@ -140,18 +140,38 @@ echo -ne "
                     Installing Graphics Drivers
 -------------------------------------------------------------------------
 "
-# Graphics Drivers find and install
-gpu_type=$(lspci)
-if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
-    pacman -S --noconfirm --needed nvidia
-	nvidia-xconfig
-elif lspci | grep 'VGA' | grep -E "Radeon|AMD"; then
-    pacman -S --noconfirm --needed xf86-video-amdgpu
-elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
-    pacman -S --noconfirm --needed libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
-elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
-    pacman -S --needed --noconfirm libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
+if [[ "${CGPU}" == "Nvidia-old" ]] && [! $AUR_HELPER == none]; then
+    echo "Catering to Nvidia-old Drivers will download from the AUR"
+else
+    # Graphics Drivers find and install
+    gpu_type=$(lspci)
+    if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
+        pacman -S --noconfirm --needed nvidia
+    	nvidia-xconfig
+    elif lspci | grep 'VGA' | grep -E "Radeon|AMD"; then
+        pacman -S --noconfirm --needed xf86-video-amdgpu
+    elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
+        pacman -S --noconfirm --needed libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
+    elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
+        pacman -S --needed --noconfirm libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
+    fi
 fi
+
+if [[ "${CGPU}" == "Intel" ]] && [ $setvsync == 1]; then
+echo -ne "
+-------------------------------------------------------------------------
+                    Catering to Render Device
+-------------------------------------------------------------------------
+"
+echo -ne 'Section "Device"
+  Identifier "Intel Graphics"
+  Driver "intel"
+  Option "AccelMethod" "sna"
+  Option "TearFree" "true"
+  Option "DRI" "3"
+EndSection' >> /etc/X11/xorg.conf.d/20-intel.conf
+fi
+
 #SETUP IS WRONG THIS IS RUN
 if ! source $HOME/archi/configs/setup.conf; then
 	# Loop through user input until the user gives a valid username

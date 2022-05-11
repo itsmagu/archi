@@ -102,6 +102,16 @@ if [[ $INSTALL_TYPE == "FULL" ]]; then
   fi
 fi
 
+if [[ "${CGPU}" == "Nvidia-old" ]] && [! $AUR_HELPER == none]; then
+echo -ne "
+-------------------------------------------------------------------------
+                Using AUR to Download Nvidia drivers
+-------------------------------------------------------------------------
+"
+  $AUR_HELPER -S --noconfirm --needed nvidia-470xx-dkms
+  nvidia-xconfig
+fi
+
 echo -ne "
 -------------------------------------------------------------------------
                     Installing pnpm
