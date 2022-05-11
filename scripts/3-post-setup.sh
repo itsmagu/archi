@@ -172,7 +172,6 @@ fi
 plymouth-set-default-theme -R arch-glow # sets the theme and runs mkinitcpio
 echo 'Plymouth theme installed'
 
-if [[ "${INSTALL_TYPE}" == "FULL" ]]; then
 echo -ne "
 -------------------------------------------------------------------------
                     Virtual Machine Setup
@@ -203,7 +202,6 @@ echo 'XKBLAYOUT = "se"' >> /etc/default/keyboard
 localectl --no-ask-password set-x11-keymap se
 setxkbmap se
 setxkbmap -option 'caps:escape'
-fi
 
 echo -ne "
 -------------------------------------------------------------------------
