@@ -158,7 +158,7 @@ echo -ne "
                Enabling (and Theming) Plymouth Boot Splash
 -------------------------------------------------------------------------
 "
-PLYMOUTH_THEMES_DIR="$HOME/ArchTitus/configs/usr/share/plymouth/themes"
+PLYMOUTH_THEMES_DIR="$HOME/archi/configs/usr/share/plymouth/themes"
 PLYMOUTH_THEME="arch-glow" # can grab from config later if we allow selection
 mkdir -p /usr/share/plymouth/themes
 echo 'Installing Plymouth theme...'
@@ -182,16 +182,9 @@ echo " Libvirtual enabled"
 sed -i -e 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/g' /etc/libvirt/libvirtd.conf
 sed -i -e 's/unix_sock_rw_perms = "0777"/unix_sock_rw_perms = "0770"/g' /etc/libvirt/libvirtd.conf
 usermod -a -G libvirt $USERNAME
-modprobe -r kvm_intel
-modprobe kvm_intel nested=1
+echo 'modprobe -r kvm_intel'
+echo 'modprobe kvm_intel nested=1'
 echo "options kvm-intel nested=1" | sudo tee /etc/modprobe.d/kvm-intel.conf
-
-echo -ne "
--------------------------------------------------------------------------
-                    Installing Rust
--------------------------------------------------------------------------
-"
-rustup install stable
 
 echo -ne "
 -------------------------------------------------------------------------

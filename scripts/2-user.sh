@@ -50,6 +50,7 @@ Installing AUR Softwares
 source $HOME/archi/configs/setup.conf
 
   cd ~
+  mkdir "/home/$USERNAME/logs"
   mkdir "/home/$USERNAME/.cache"
   mkdir "/home/$USERNAME/.config"
 sed -n '/'$INSTALL_TYPE'/q;p' ~/archi/pkg-files/${DESKTOP_ENV}.txt | while read line
@@ -110,18 +111,17 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 echo -ne "
 -------------------------------------------------------------------------
+                    Installing Rust
+-------------------------------------------------------------------------
+"
+rustup install stable
+
+echo -ne "
+-------------------------------------------------------------------------
                   Steals Configs from Github
 -------------------------------------------------------------------------
 "
 chezmoi init --apply https://github.com/itsmagu/dotconf
-echo -ne "
--------------------------------------------------------------------------
-                    Keyboard Writeup
--------------------------------------------------------------------------
-"
-localectl --no-ask-password set-x11-keymap se
-setxkbmap se
-setxkbmap -option 'caps:escape'
 
 echo -ne "
 -------------------------------------------------------------------------
