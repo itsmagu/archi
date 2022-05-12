@@ -194,7 +194,10 @@ echo -ne "
                     Last Writeup
 -------------------------------------------------------------------------
 "
-echo "root:$PASSWORD" | chpasswd
+echo "Root password set in stone"
+chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish $USERNAME
+echo "Shell is now set to Fish"
 
 echo -ne "
 -------------------------------------------------------------------------
