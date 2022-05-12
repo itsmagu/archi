@@ -145,12 +145,32 @@ gpu_type=$(lspci)
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     pacman -S --noconfirm --needed nvidia
 	nvidia-xconfig
+    echo "Installing Nvidia"
 elif lspci | grep 'VGA' | grep -E "Radeon|AMD"; then
     pacman -S --noconfirm --needed xf86-video-amdgpu
+    echo "Installing AMD"
 elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
     pacman -S --noconfirm --needed libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
+    echo "Installing Intel"
+echo -ne 'Section "Device"
+  Identifier "Intel Graphics"
+  Driver "intel"
+  Option "AccelMethod" "sna"
+  Option "TearFree" "true"
+  Option "DRI" "3"
+EndSection' >> /etc/X11/xorg.conf.d/20-intel.conf
+  echo "Intel Vsync enabled"
 elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
     pacman -S --needed --noconfirm libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa
+    echo "Installing Intel"
+echo -ne 'Section "Device"
+  Identifier "Intel Graphics"
+  Driver "intel"
+  Option "AccelMethod" "sna"
+  Option "TearFree" "true"
+  Option "DRI" "3"
+EndSection' >> /etc/X11/xorg.conf.d/20-intel.conf
+  echo "Intel Vsync enabled"
 fi
 #SETUP IS WRONG THIS IS RUN
 if ! source $HOME/archi/configs/setup.conf; then
