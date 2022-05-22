@@ -15,6 +15,7 @@ set +a
       ( arch-chroot /mnt /usr/bin/runuser -u $USERNAME -- /home/$USERNAME/archi/scripts/2-user.sh )|& tee 2-user.log
     fi
     ( arch-chroot /mnt $HOME/archi/scripts/3-post-setup.sh )|& tee 3-post-setup.log
+    mkdir /mnt/home/$USERNAME/logs
     cp *.log /mnt/home/$USERNAME/logs
 
 echo -ne "
