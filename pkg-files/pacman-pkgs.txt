@@ -14,8 +14,8 @@ usbutils
 xdg-user-dirs
 ranger
 neovim
---END OF MINIMAL INSTALL--
 refind
+--END OF MINIMAL INSTALL--
 curl
 wget
 autoconf
