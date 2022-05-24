@@ -15,9 +15,9 @@ xdg-user-dirs
 ranger
 neovim
 refind
---END OF MINIMAL INSTALL--
 curl
 wget
+--END OF MINIMAL INSTALL--
 autoconf
 automake
 awesome-terminal-fonts
@@ -28,7 +28,6 @@ bluez-libs
 bluez-utils
 bridge-utils
 btrfs-progs
-celluloid
 cmatrix
 cronie
 dialog
@@ -56,7 +55,6 @@ jdk-openjdk
 libdvdcss
 libtool
 lsof
-lutris
 lzop
 m4
 make
@@ -78,11 +76,9 @@ python-psutil
 python-pyqt5
 python-pip
 qemu
-snap-pac
 snapper
-steam
+snap-pac
 swtpm
-synergy
 terminus-font
 traceroute
 ttf-droid
