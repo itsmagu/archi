@@ -13,3 +13,4 @@ snapper-gui-git
 ttf-meslo
 vde2
 system-monitoring-center
+nerd-fonts-complete
