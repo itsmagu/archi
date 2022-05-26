@@ -14,3 +14,4 @@ ttf-meslo
 vde2
 system-monitoring-center
 nerd-fonts-complete
+code-marketplace
