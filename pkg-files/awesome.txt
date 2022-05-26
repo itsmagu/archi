@@ -8,7 +8,6 @@ pipewire-alsa
 pipewire-pulse
 pipewire-jack
 lib32-pipewire-jack
-dunst
 rofi
 feh
 lightdm-webkit2-greeter
@@ -16,11 +15,9 @@ lightdm-webkit-theme-litarvan
 lxappearance
 qt5ct
 xclip
-scrot
 thunar
 thunar-archive-plugin
 thunar-volman
-thunar-media-tags-plugin
 tumbler
 jq
 w3m
@@ -61,6 +58,7 @@ qt5-styleplugins
 papirus-icon-theme
 webkit2gtk
 --END OF MINIMAL INSTALL--
+dunst
 discord
 blender
 gimp
@@ -71,6 +69,7 @@ mpv
 etcher-bin
 openssl
 appmenu-gtk-module
+scrot
 gtk3
 libappindicator-gtk3
 librsvg
