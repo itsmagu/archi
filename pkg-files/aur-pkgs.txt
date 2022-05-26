@@ -4,15 +4,15 @@ code-marketplace
 nerd-fonts-complete
 nerd-fonts-fira-code
 pnmixer
+ttf-meslo
+lightly-git
+lightlyshaders-git
 --END OF MINIMAL INSTALL--
 bridge-utils
 dxvk-bin
-lightly-git
-lightlyshaders-git
 mangohud
 mangohud-common
 ocs-url
 snapper-gui-git
-ttf-meslo
 vde2
 system-monitoring-center

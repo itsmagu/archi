@@ -53,7 +53,10 @@ flameshot
 network-manager-applet 
 xfce4-power-manager 
 qt5-styleplugins 
+openssl
 papirus-icon-theme
+gtk3
+appmenu-gtk-module
 webkit2gtk
 --END OF MINIMAL INSTALL--
 dunst
@@ -65,10 +68,7 @@ lutris
 libretro
 mpv
 etcher-bin
-openssl
-appmenu-gtk-module
 scrot
-gtk3
 libappindicator-gtk3
 librsvg
 libvips
