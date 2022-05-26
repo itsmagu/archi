@@ -27,7 +27,6 @@ neofetch
 htop
 picom
 gtk2-perl
-playerctl
 xsettingsd
 fish
 kitty
@@ -41,7 +40,7 @@ openbsd-netcat
 dnsmasq
 bridge-utils
 ebtables
-libguestfs 
+libguestfs
 iptables
 iptables-nft
 i3lock-fancy 
@@ -49,9 +48,8 @@ xclip
 ttf-roboto 
 polkit-gnome 
 materia-theme 
-lxappearance 
-flameshot 
-pnmixer 
+lxappearance
+flameshot
 network-manager-applet 
 xfce4-power-manager 
 qt5-styleplugins 
@@ -74,3 +72,4 @@ gtk3
 libappindicator-gtk3
 librsvg
 libvips
+playerctl

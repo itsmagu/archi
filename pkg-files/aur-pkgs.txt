@@ -3,6 +3,7 @@ plymouth-git
 code-marketplace
 nerd-fonts-complete
 nerd-fonts-fira-code
+pnmixer
 --END OF MINIMAL INSTALL--
 bridge-utils
 dxvk-bin

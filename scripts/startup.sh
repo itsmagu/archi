@@ -272,11 +272,10 @@ userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} # convert to lower case as in issue #109 
 while true; do
-  echo -ne "Please enter your password: \n"
-  read password
-
-  echo -ne "Please repeat your password: \n"
-  read password2
+  read -p "Set password: " password
+  logo
+  clear
+  read -p "Type password again: " password2
 
   if [ "$password" = "$password2" ]; then
     set_option PASSWORD $password
