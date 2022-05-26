@@ -3,7 +3,6 @@ plymouth-git
 code-marketplace
 nerd-fonts-complete
 nerd-fonts-fira-code
-pnmixer
 ttf-meslo
 lightly-git
 lightlyshaders-git
