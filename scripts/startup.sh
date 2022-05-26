@@ -273,8 +273,8 @@ read -p "Please enter your username: " username
 set_option USERNAME ${username,,} # convert to lower case as in issue #109 
 while true; do
   read -p "Set password: " password
-  logo
   clear
+  logo
   read -p "Type password again: " password2
 
   if [ "$password" = "$password2" ]; then
