@@ -165,6 +165,7 @@ echo -ne "
             ██    ████░░░░▒▒▒▒░░▒▒▒▒░░░░████▓▓▓▓██            
           ██    ██    ████░░░░░░░░░░████    ██▓▓▓▓██          
         ████████          ██████████          ████████        
+                  ORIGINAL BY CHRISTITUSTECH
 -----------------------------------------------------------------
 "
 }
@@ -267,16 +268,15 @@ echo -e "\n${disk%|*} selected \n"
 drivessd
 }
 
-# @description Gather username and password to be used for installation. 
 userinfo () {
 read -p "Please enter your username: " username
 set_option USERNAME ${username,,} # convert to lower case as in issue #109 
 while true; do
   echo -ne "Please enter your password: \n"
-  read -s password # read password without echo
+  read password
 
   echo -ne "Please repeat your password: \n"
-  read -s password2 # read password without echo
+  read password2
 
   if [ "$password" = "$password2" ]; then
     set_option PASSWORD $password
@@ -289,21 +289,11 @@ read -rep "Please enter your hostname: " nameofmachine
 set_option NAME_OF_MACHINE $nameofmachine
 }
 
-# @description Choose AUR helper. 
-aurhelper () {
-  # Let the user choose AUR helper from predefined list
-  echo -ne "Please enter your desired AUR helper:\n"
-  options=(yay none)
-  select_option $? 4 "${options[@]}"
-  aur_helper=${options[$?]}
-  set_option AUR_HELPER $aur_helper
-}
-
 # @description Choose Desktop Environment
 desktopenv () {
   # Let the user choose Desktop Enviroment from predefined list
   echo -ne "Please select your desired Desktop Enviroment:\n"
-  options=(kde awesome server )
+  options=(awesome server )
   select_option $? 4 "${options[@]}"
   desktop_env=${options[$?]}
   set_option DESKTOP_ENV $desktop_env
@@ -330,11 +320,9 @@ userinfo
 desktopenv
 # Set fixed options that installation uses if user choses server installation
 set_option INSTALL_TYPE MINIMAL
-set_option AUR_HELPER NONE
 if [[ ! $desktop_env == server ]]; then
   clear
   logo
-  aurhelper
   installtype
 fi
 diskpart

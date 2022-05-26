@@ -65,40 +65,23 @@ do
 done
 
 
-if [[ ! $AUR_HELPER == none ]]; then
-  cd ~
-  git clone "https://aur.archlinux.org/$AUR_HELPER.git"
-  cd ~/$AUR_HELPER
-  makepkg -si --noconfirm
-  # sed $INSTALL_TYPE is using install type to check for MINIMAL installation, if it's true, stop
-  # stop the script and move on, not installing any more packages below that line
-  sed -n '/'$INSTALL_TYPE'/q;p' ~/archi/pkg-files/aur-pkgs.txt | while read line
-  do
-    if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
-      # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
-      continue
-    fi
-    echo "INSTALLING: ${line}"
-    $AUR_HELPER -S --noconfirm --needed ${line}
-  done
-fi
+cd ~
+git clone "https://aur.archlinux.org/yay.git"
+cd ~/yay
+makepkg -si --noconfirm
+# sed $INSTALL_TYPE is using install type to check for MINIMAL installation, if it's true, stop
+# stop the script and move on, not installing any more packages below that line
+sed -n '/'$INSTALL_TYPE'/q;p' ~/archi/pkg-files/aur-pkgs.txt | while read line
+do
+  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
+    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
+    continue
+  fi
+  echo "INSTALLING: ${line}"
+  yay -S --noconfirm --needed --quiet ${line}
+done
 
 export PATH=$PATH:~/.local/bin
-
-# Theming DE if user chose FULL installation
-if [[ $INSTALL_TYPE == "FULL" ]]; then
-  if [[ $DESKTOP_ENV == "kde" ]]; then
-    cp -r ~/archi/configs/.config/* ~/.config/
-    pip install konsave
-    konsave -i ~/archi/configs/kde.knsv
-    sleep 1
-    konsave -a kde
-  elif [[ $DESKTOP_ENV == "openbox" ]]; then
-    cd ~
-    git clone https://github.com/stojshic/dotfiles-openbox
-    ./dotfiles-openbox/install-titus.sh
-  fi
-fi
 
 if [[ $DESKTOP_ENV == "awesome" ]]; then
   git clone https://github.com/itsmagu/awesome /home/$USERNAME/.config/awesome
@@ -120,7 +103,7 @@ chezmoi init --apply https://github.com/itsmagu/dotconf
 
 echo -ne "
 -------------------------------------------------------------------------
-                    SYSTEM READY FOR 3-post-setup.sh
+              SYSTEM READY FOR 3-post-setup.sh
 -------------------------------------------------------------------------
 "
 exit

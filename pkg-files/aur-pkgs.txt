@@ -1,17 +1,17 @@
+github-desktop-bin
+plymouth-git
+code-marketplace
+nerd-fonts-complete
+nerd-fonts-fira-code
 --END OF MINIMAL INSTALL--
 bridge-utils
 dxvk-bin
-github-desktop-bin
 lightly-git
 lightlyshaders-git
 mangohud
 mangohud-common
-nerd-fonts-fira-code
 ocs-url
-plymouth-git
 snapper-gui-git
 ttf-meslo
 vde2
 system-monitoring-center
-nerd-fonts-complete
-code-marketplace
