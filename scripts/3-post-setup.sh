@@ -138,6 +138,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 PLYMOUTH_THEMES_DIR="$HOME/archi/configs/usr/share/plymouth/themes"
+PLYMOUTH_THEME=$(shuf -n1 -e connect cuts_alt loader_alt pixels sphere)
 PLYMOUTH_THEME= shuf -n1 -e connect cuts_alt loader_alt pixels sphere
 mkdir -p /usr/share/plymouth/themes
 echo 'Installing Plymouth theme...'
