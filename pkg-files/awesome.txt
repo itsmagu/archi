@@ -26,7 +26,6 @@ nano
 neofetch
 htop
 picom
-epiphany
 gtk2-perl
 xsettingsd
 fish
