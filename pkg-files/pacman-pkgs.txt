@@ -10,20 +10,22 @@ dosfstools
 linux-headers
 base-devel
 htop
-noto-fonts-emoji
-usbutils
-xdg-user-dirs
 ranger
 neovim
 refind
 curl
 wget
 terminus-font
+rustup
+fish
+--END OF MINIMAL INSTALL--
+xdg-user-dirs
 ttf-droid
 ttf-hack
+noto-fonts-emoji
 ttf-roboto
 awesome-terminal-fonts
---END OF MINIMAL INSTALL--
+usbutils
 autoconf
 automake
 bind

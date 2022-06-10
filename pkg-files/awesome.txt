@@ -1,6 +1,7 @@
 awesome
 lightdm
-lightdm-gtk-greeter
+lightdm-webkit2-greeter
+lightdm-webkit-theme-litarvan
 lxsession
 pipewire
 lib32-pipewire
@@ -9,11 +10,15 @@ pipewire-pulse
 pipewire-jack
 lib32-pipewire-jack
 rofi
-feh
-lightdm-webkit2-greeter
-lightdm-webkit-theme-litarvan
 lxappearance
+feh
+neofetch
+picom
+kitty
+qemu
+--END OF MINIMAL INSTALL--
 qt5ct
+lightdm-gtk-greeter
 xclip
 thunar
 thunar-archive-plugin
@@ -23,19 +28,12 @@ jq
 w3m
 parcellite
 nano
-neofetch
-htop
-picom
 gtk2-perl
 xsettingsd
-fish
-kitty
-rustup
 libvirt
 edk2-ovmf
 virt-manager
 virt-viewer
-qemu
 openbsd-netcat
 dnsmasq
 bridge-utils
@@ -58,7 +56,6 @@ papirus-icon-theme
 gtk3
 appmenu-gtk-module
 webkit2gtk
---END OF MINIMAL INSTALL--
 dunst
 discord
 blender

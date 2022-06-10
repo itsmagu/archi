@@ -1,17 +1,11 @@
 github-desktop-bin
 plymouth-git
 code-marketplace
-nerd-fonts-complete
-nerd-fonts-fira-code
-ttf-meslo
-lightly-git
-lightlyshaders-git
 --END OF MINIMAL INSTALL--
 bridge-utils
 dxvk-bin
 mangohud
 mangohud-common
-ocs-url
 snapper-gui-git
 vde2
 system-monitoring-center
