@@ -18,13 +18,13 @@ wget
 terminus-font
 rustup
 fish
---END OF MINIMAL INSTALL--
-xdg-user-dirs
+awesome-terminal-fonts
 ttf-droid
 ttf-hack
 noto-fonts-emoji
 ttf-roboto
-awesome-terminal-fonts
+--END OF MINIMAL INSTALL--
+xdg-user-dirs
 usbutils
 autoconf
 automake
