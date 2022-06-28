@@ -62,6 +62,7 @@ blender
 gimp
 inkscape
 lutris
+gamehub
 libretro
 mpv
 etcher-bin
@@ -70,3 +71,5 @@ libappindicator-gtk3
 librsvg
 libvips
 playerctl
+krita
+pinta
